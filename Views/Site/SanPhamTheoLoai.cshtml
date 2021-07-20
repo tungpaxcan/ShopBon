@@ -1,0 +1,37 @@
+﻿
+@model IEnumerable<ShopBon.Models.Product>
+
+@{
+    ViewBag.Title = "SanPhamTheoLoai";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h3 style="text-align:center;color:red">Sản Phẩm Theo Chủ Đề</h3>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4 col-lg-4 col-md-4">
+            <div class="thumbnail">
+                <a href="@Url.Action("Details","Site",new {id = item.Id})">
+                    <img alt="@item.Name" src="~/Public/Images/@item.Img" width="200" />
+                </a>
+                <div>
+                    <br />
+                    <h4 style="text-align:center">
+                        @item.Name
+                    </h4>
+                    <p></p>
+                </div>
+                <div class="ratings">
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

@@ -1,0 +1,81 @@
+﻿@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width = device-width" />
+    <title>Login</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Public/css/all.min.css" rel="stylesheet" />
+    <link href="~/Public/css/layout.css" rel="stylesheet" />
+    <link href="~/Content/reset.css" rel="stylesheet" />
+    <link href="~/Content/structure.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="top-content">
+        <div class="inner-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h4>Đăng Nhập Hệ Thống Quản Trị</h4>
+                                <p>Vui Lòng Nhập UserName và Password</p>
+                                <h4 style="color:red;text-align:center">@ViewBag.ThongBao</h4>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-key"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            @using(Html.BeginForm())
+                            {
+                                @Html.ValidationSummary(true)
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-username">Username</label>
+                                    <input type="text" name="username" placeholder="Username..."class="form-username form-control"id="form-username" />
+                                    @ViewData["Loi1"]
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-password">Password</label>
+                                    <input type="password" name="password" placeholder="Password..." class="form-password form-control"id=" form-password" />
+                                    @ViewData["Loi2"]
+                                </div>
+                                <button type="submit" class="btn">Đăng Nhập</button>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div>
+        <h4>Đăng Nhập Hệ Thống Quản Trị</h4>
+        <p>Vui Lòng Nhập UserName và Password:</p>
+        <h4 style="color:red;text-align:center">@ViewBag.ThongBao</h4>
+    </div>
+    <form class="box login">
+
+            <fieldset class="boxBody">
+
+                <div class="form-group">
+                    <label class="sr-only"for="form-username">Username</label>
+                    <input type="text" tabindex="1" name="username" placeholder="username" required="" class="form-username form-control">
+ 
+                </div>
+                <div class="form-group">
+                    <label class="sr-only"for="form-password">Password</label>
+                    <input type="password" name="password" placeholder="password" tabindex="2" required="" class="form-password">
+                </div>
+            </fieldset>        
+                <input type="submit" class="btnLogin" value="Login" tabindex="4">
+        
+        </form>*@
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+    <script src="~/Scripts/popper.mim.js"></script>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

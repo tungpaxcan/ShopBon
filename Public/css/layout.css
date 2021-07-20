@@ -1,0 +1,13 @@
+﻿
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+.mainmenu {
+    background-color: black;
+}
+.bg-primary {
+    color: #fff;
+    background-image: url("../Images/ban-nuoc-hoa-xach-tay4.jpg")
+}

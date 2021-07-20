@@ -1,0 +1,66 @@
+﻿@model ShopBon.Models.Product
+
+@{
+    ViewBag.Title = "ChiTietSanPham";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>ChiTietSanPham</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã Sản Phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CatId)
+        </dd>
+
+        <dt>
+            Tên Sản Phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            Chi Tiết Sản Phẩm
+        </dt>
+
+        <dd >
+
+            @Html.DisplayFor(model => model.Detail)
+        </dd>
+
+        <dt>
+            Giá Bán
+        </dt>
+
+        <dd>
+            @String.Format("{0:0,0}", Model.PriceBuy) VNĐ
+        </dd>
+
+        <dt>
+            Ảnh
+        </dt>
+
+        <dd>
+            <img src="@Url.Content("~/Public/Images/"+Model.Img)"width="120px" />
+        </dd>
+
+        <dt>
+            Ngày Cập Nhật
+        </dt>
+
+        <dd>
+            @String.Format("{0:dd/MM/yyyy}",Model.Created_At)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Điều Chỉnh", "Sua", new { id = Model.Id }) |
+    @Html.ActionLink("Trở Về", "Product")
+</p>

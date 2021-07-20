@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8">
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Public/css/all.min.css" rel="stylesheet" />
+    <link href="~/Public/css/layout.css" rel="stylesheet" />
+
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v11.0&appId=3332707726956028&autoLogAppEvents=1" nonce="1zcbI6Vk"></script>
+    <script>
+
+        function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+            console.log('statusChangeCallback');
+            console.log(response);                   // The current login status of the person.
+            if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+                testAPI();
+            } else {                                 // Not logged into your webpage or we are unable to tell.
+                document.getElementById('status').innerHTML = 'Please log ' +
+                    'into this webpage.';
+            }
+        }
+
+
+        function checkLoginState() {               // Called when a person is finished with the Login Button.
+            FB.getLoginStatus(function (response) {   // See the onlogin handler
+                statusChangeCallback(response);
+            });
+        }
+
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '{3332707726956028',
+                cookie: true,                     // Enable cookies to allow the server to access the session.
+                xfbml: true,                     // Parse social plugins on this webpage.
+                version: '{v11.0}'           // Use this Graph API version for this call.
+            });
+
+
+            FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
+                statusChangeCallback(response);        // Returns the login status.
+            });
+        };
+
+        function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+            console.log('Welcome!  Fetching your information.... ');
+            FB.api('/me', function (response) {
+                console.log('Successful login for: ' + response.name);
+                document.getElementById('status').innerHTML =
+                    'Thanks for logging in, ' + response.name + '!';
+            });
+    
+        }
+
+    </script>
+    <div id="status">
+    </div>
+
+    <!-- Load the JS SDK asynchronously -->
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <section id="hearder" class="bg-primary">
+        <div class="container">
+
+            <div class="col-md-2 logo">
+                <a href="@Url.Action("Index","Site")"><img src="~/Public/Images/logo/logoNH.jpg" class="img-circle" /></a>
+            </div>
+            <div style="margin-top:70px" class="col-md-6 ">
+
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input style="width:450px" type="text" class="form-control" placeholder="Nhập Từ KHóa Cần Tìm">
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+            <div style="margin-top:80px" class="col-md-2">
+                <a style="width: 180px; height: 30px" class="btn btn-danger"><i class="fas fa-phone">Hotline:0932045603</i></a>
+            </div>
+            <div style="margin-top:80px" class="col-md-2">
+                <a style="color:tomato"><i class="fas fa-shopping-cart"></i>@Html.Action("GioHangPartial", "GioHang")</a>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="mainmenu" class="mainmenu">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Thông Tin Mới<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.Action("Detai", "Site")</li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Các Loại Sản Phẩm <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.Action("ChuDe", "Site")</li>
+
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">Link</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Thành Viên @Html.Action("Menu", "Site") <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("DangKi","NguoiDung")">Đăng Ký Thành Viên</a></li>
+                                <li><a href="@Url.Action("DangNhap","NguoiDung")">Đăng Nhập</a></li>
+                                <li><a href="@Url.Action("Login","Admin")">Admin</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </section>
+    <section id="maincontent">
+    </section>
+    <section id="footer">
+    </section>
+    <section id="copyright">
+    </section>
+
+    @RenderBody()
+
+
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+    <script src="~/Scripts/popper.mim.js"></script>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

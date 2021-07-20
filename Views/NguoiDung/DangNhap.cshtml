@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h4 style="color:red;text-align:center">@ViewBag.ThongBao</h4>
+<table align="center">
+    <h3 style="text-align:center">Đăng Nhập</h3>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <tr style="height:40px">
+            <td>Tên Đăng Nhập</td>
+            <td>
+                @Html.TextBox("TenDN")
+                @ViewData["Loi1"]
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td align="right">Mật Khẩu</td>
+            <td>
+                @Html.Password("MatKhau")
+                @ViewData["Loi2"]
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td></td>
+            <td>
+                <input type="submit" value="Đăng Nhập" />
+                <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+                </fb:login-button>
+                @*<div>
+                    <fb:logout-button scope="public_profile,email" ="checkLoginState();">
+                    </fb:logout-button>
+
+
+                </div>*@
+            </td>
+
+                
+
+        </tr>
+
+    }
+
+
+
+</table>
+

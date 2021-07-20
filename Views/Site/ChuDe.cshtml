@@ -1,0 +1,11 @@
+﻿@model IEnumerable<ShopBon.Models.Category>
+
+    <div class="list-group">
+        @foreach (var item in Model)
+        {
+       
+            <a href="@Url.Action("SanPhamTheoLoai","Site",new {id = item.Id })" class="list-group-item">
+                @item.Name
+            </a>
+        }
+    </div>

@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "DangKi";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<table align="center">
+    <h2 style="text-align:center">Đăng Kí Thành Viên</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary(true)
+        <tr style="height:40px">
+            <td>Họ Tên Khách Hàng</td>
+            <td>@Html.TextBox("HoTenKH") </td>
+            <td>@ViewData["Loi1"]</td>
+        </tr>
+        <tr style="height:40px">
+            <td>Tên Đăng Nhập</td>
+            <td>
+                @Html.TextBox("TenDN")
+                @ViewData["Loi2"]
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>Mật Khẩu</td>
+            <td>
+                @Html.Password("MatKhau")
+                @ViewData["Loi3"]
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>Nhập Lại Mật Khẩu</td>
+            <td>
+                @Html.Password("NhapLaiMatKhau")
+                @ViewData["Loi4"]
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>Nhập Địa Chỉ</td>
+            <td>
+                @Html.TextBox("DiaChi")
+                @ViewData["Loi5"]
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>Nhập Email</td>
+            <td>
+                @Html.TextBox("Email")
+                @ViewData["Loi6"]
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>Điện Thoại</td>
+            <td>
+                @Html.TextBox("DienThoai")
+                @ViewData["Loi7"]
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>Ngày Sinh</td>
+            <td>
+                <input type="date" name="Ngaysinh" />
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td></td>
+            <td>
+                <input type="submit" value="Đăng Ký" />
+            </td>
+        </tr>
+    }
+</table>
+

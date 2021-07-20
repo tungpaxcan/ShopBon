@@ -1,0 +1,128 @@
+﻿@using ShopBon.Models
+@using PagedList.Mvc;
+@model PagedList.PagedList<ShopBon.Models.Product>
+
+@helper Truncate(string input,int length)
+    {
+if (input.Length<length)
+{
+        @input
+}
+else
+{
+        @input.Substring(0, length)<textarea>...</textarea>
+}
+    }
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Quản Lí Sản Phẩm</h2>
+
+<p>
+    @Html.ActionLink("Thêm Mới Sản Phẩm", "ThemMoi")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+            @Html.DisplayNameFor(model => model.First().Id)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.First().Name)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Slug)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.First().Detail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().PriceBuy)
+        </th>
+        <th>
+           @Html.DisplayNameFor(model => model.First().Img)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.MetaKey)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MetaDesc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created_By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Created_At)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Updated_By)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Updated_At)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CatId)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Slug)
+        </td>*@
+        <td>
+            @Truncate(item.Detail,100)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PriceBuy)
+        </td>
+        <td >
+            <img width="60px"height="60px" src="@Url.Content("~/Public/Images/"+ item.Img)" />
+        </td>  
+        @*<td>
+            @Html.DisplayFor(modelItem => item.MetaKey)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MetaDesc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created_By)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Created_At)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Updated_By)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Updated_At)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>*@
+        <td>
+            @Html.ActionLink("Sửa", "Sua", new { id=item.Id }) |
+            @Html.ActionLink("Chi Tiết", "ChiTietSanPham", new { id=item.Id }) |
+            @Html.ActionLink("Xóa", "Xoa", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+Trang @(Model.PageCount<Model.PageNumber ? 0 : Model.PageNumber)/@Model.PageCount;
+<div class="MenuTrang">
+    @Html.PagedListPager(Model, page => Url.Action("Product",new { page = page } ) )
+</div>
+<style>
+    .MenuTrang li{
+        display :inline;
+    }
+</style>

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<ShopBon.Models.Topic>
+@{
+    ViewBag.Title = "DeTaiMoi";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h3 style="text-align:center; color:red">Thông Tin</h3>
+<div class="row">
+    @foreach(var item in Model)
+    {
+        <a href="@Url.Action("Details","Site",new {id =item.Status })"></a>
+    }
+</div>
+
